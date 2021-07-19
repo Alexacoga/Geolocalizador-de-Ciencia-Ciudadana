@@ -1,0 +1,46 @@
+header {
+	width:	100%;
+	background-color: lightseagreen;
+	display: flex;
+	justify-content: flex-start;
+	padding-left: 25px;
+	
+	align-items: center;
+	position: fixed; /* to set this element above any other */	
+	z-index: 1;
+}
+.navBar {
+	height: 80px;
+}
+
+.logo {
+	cursor: pointer;
+    width: 60px;
+    height: 60px;
+	opacity: 0.9;
+}
+.logo:hover {
+	color: antiquewhite;
+	opacity: 1;
+}
+
+.nav_links {
+    padding-left: 30px;
+	opacity: 0.9;
+}
+.nav_links li {
+	display: inline-block;
+	padding-left: 30px;
+	font-size: large;
+	font-weight: bold;
+	opacity: 1;
+}
+
+.nav_links li a {
+	color: rgb(255, 247, 231);
+	transition: all 0.3s ease 0s;
+	text-decoration: none;
+}
+.nav_links li a:hover {
+	color: antiquewhite;
+}

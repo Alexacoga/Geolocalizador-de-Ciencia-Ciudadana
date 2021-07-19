@@ -1,0 +1,153 @@
+<%- include('common/header');-%>
+
+<body>
+    <%- include('common/navBar');-%>
+
+    <div class="main-container">
+        <h1 id="main-title">Formulario de proyectos</h1>
+
+        <div class="info-container" style="min-height: 100px;"> <!-- added an style exception -->
+            <h2>¿Qué necesitas saber para añadir un proyecto?</h2>
+            <p>Para poder introducir un proyecto necesitas recabar datos sobre los componentes especificados en el 
+                siguiente formulario, entre estos únicamente los recalcados en rojo indicados con '*' son obligatorios para permitir distinguirlos.
+                Pero, ten en cuenta, que cuantos más datos aportes más informativo será para los usuarios en busca de proyectos.</p>
+                <p>También puedes, de manera optativa añadir eventos al proyecto al momento de crearlo, si es que conoces que tenga alguno programado.
+                Para hacerlo solo necesitas clicar sobre el '+' y fijar todos los parámetros obligatoriamente, a excepción de los materiales y la duración, 
+                para que si se añadan con el proyecto; sino se ignoran por falta de datos.</p>    
+        </div>
+
+        <form action="/add" method="POST" id="project-form" autocomplete="off">
+
+            <h2 class="form-title">Información del proyecto</h2>
+
+            <div id="project-form-group">
+                <div class="form-group">
+                    <p>Título*</p>
+                    <input type="text" name="TITLE" required>
+                
+                    <p>Descripción*</p>
+                    <textarea name="DESCRIPTION" cols="55" rows="6"
+                    placeholder="Añadir de que trata el proyecto y cualquier información relevante" maxlength="420"
+                    style="resize:none" required></textarea>
+                
+                    <p>Objetivo/s*</p>
+                    <textarea name="OBJECTIVES" cols="55" rows="3"
+                    placeholder="Objetivo/s que pretende alcanzar el proyecto"
+                    maxlength="240" style="resize:none" required></textarea>
+                
+                    <p>Tareas*</p>
+                    <textarea name="TASKS" cols="55" rows="3"
+                    placeholder="Listado de tareas del proyecto con su descripción y tipo correspondiente" 
+                    maxlength="240" style="resize:none" required></textarea>
+                
+                    <p>Herramientas necesarias</p>
+                    <textarea name="TOOLS" cols="55" rows="2"
+                    placeholder="Herramientas necesarias para realizar las tareas" maxlength="120"
+                    style="resize:none"></textarea>
+                
+                    <p>Entidad responsable*</p>
+                    <input type="text" name="MAIN PROGRAM OR PERSON IN CHARGE"  placeholder="Programa y/o persona al cargo" required>
+                
+                    <p>Alcance geográfico de desarrollo</p>
+                    <select name="DEVELOPMENT SPACE" style="min-width: 140px;">
+                        <option><!--Sin definir--></option><option>Local</option><option>Regional</option>
+                        <option>Nacional</option><option>Internacional</option><option>Europeo</option>
+                    </select>
+
+                    <p>Web del proyecto*</p>
+                    <input type="url" name="Project web" placeholder="*url de la platforma" required>
+                
+                    <p>Localización*</p>
+                    <input type="text" name="LOCATION" placeholder="La dirección exacta y/o la ciudad donde se lleva a cabo *(ubicación donde se localizará el marcador)" required>
+                
+                    <p>Presencialidad <select name="PRESENTIAL" style="margin-inline: 10px; min-width: 140px;">
+                        <option><!--Sin definir--></option><option>Presencial</option><option>A distancia</option><option>Mixto</option>
+                    </select></p>                    
+                
+                    <p>Fecha de  
+                    Inicio<input id="start-date" type="date" name="START DATE" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" style="margin-inline: 10px; max-width: 130px;">
+                    Final<input id="end-date" type="date" name="END DATE" min="start-date" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" style="margin-left: 10px; max-width: 130px;">
+                    </p>
+                
+                    <p>Idioma/s</p>
+                    <input type="text" name="Language" placeholder="Lengua/s en que se desarrolla *entre comas">
+                
+                    <p>Tema/s</p>
+                    <input list="tematicas" type="text" name="TOPICS" placeholder="Temáticas que trata *entre comas (puedes seleccionar entre las propuestas, combinarlas o poner una propia)">
+                    <datalist id="tematicas">
+                        <option value="Biodiversidad y medioambiente"><option value="Tecnologías de la información y comunicaciones"><option value="Biotecnología">
+                        <option value="Arquitectura y planificación del territorio"><option value="Ciencias sociales y humanidades"><option value="Creación digital">
+                        <option value="Astronomía"><option value="Ingeniería"><option value="Matemáticas"><option value="Salud"><option value="Investigación Educativa">
+                        <option value="Física"><option value="Conocimiento general">
+                    </datalist>
+                    
+                    <p>Número de participantes</p>
+                    <input type="text" name="NUMBER OF MEMBERS" placeholder="*cantidad numérica, especificaciones">
+                
+                    <p>Otras webs relacionadas</p>
+                    <input type="text" name="WEB" placeholder="*urls entre comas">
+                
+                    <p>Información de contacto</p>
+                    <input type="text" name="CONTACT INFO" placeholder="*e.g. mail, teléfono, etc">
+                    
+                </div>
+            </div>
+
+            <div id="events-form-group">
+                <h2 class="form-title" style="padding-bottom: 10px;">Eventos del proyecto <!-- with specially madebutton -->
+                    <button type="button" id="addEvents" style="font-size: 24px; font-weight: bold; padding-block: 0px; margin: 0; margin-left: 10px; border-radius: 100px;">+</button>
+                </h2>
+                <table id="EVENTS" style="margin-top: 15px;">
+                    <tr style="font-size: large;">
+                        <th>Nombre</th> <th>Descripción</th> <th>Materiales</th> <th>Inicio</th> <th>Fin</th>
+                        <th>Clase</th> <th>Presencialidad</th> <th>Duración</th>
+                    </tr> <!-- table header -->
+
+                </table>
+            </div>
+
+            <h4><input type="checkbox" style="margin-top: 40px; align-self: flex-end;" required>
+                He leído y acepto <a type="button" id="open-popup">el aviso legal y la política de privacidad</a></h4>
+            
+            <div id="form-buttons">
+                <button type="reset">
+                    Vaciar formulario
+                </button>
+                <button type="submit">
+                    Añadir proyecto
+                </button>
+            </div>
+
+        </form>
+
+        <h2 id="info-title">Gracias por tu aportación!</h2>
+        
+        <!-- Privacy policies popup window -->
+        <div class="overlay" id="overlay">
+            <div class="popup" id="popup">
+                <a href="#events-form-group" id="close-popup"><b>X</b></a>
+                <h3>Aviso legal y política de privacidad:</h3>
+                <p>
+                    Esta web surge como un proyecto privado para el desarrollo del TFG de su autor, por lo que todos los datos se tratan de manera interna y anónima. Además, en esta web no se requieren cookies en ningún momento por lo que no se capta ningún dato más aparte de los aportados voluntariamente.
+                </p><p>
+                    En esta plataforma damos visibilidad a la ciencia ciudadana y únicamente pretendemos usar los datos captados de manera interna en la web y completamente transparente para el resto de usuarios.
+                </p><p>
+                    Todos los datos aportados voluntariamente en el formulario serán públicos y se mostrarán  como proyectos visibles en el mapa para todo el mundo que acceda. No nos responsabilizamos de los datos introducidos en el formulario ya que estos se muestran como proyectos reales una vez añadidos de manera completamente voluntaria.
+                </p><p>
+                    Cualquier duda sobre esto o en caso de querer retirar algún proyecto añadido, según se dispone al Reglamento General de Protección de Datos (UE) 2016/679 y a la Ley Orgánica 3/2018 de Protección de Datos Personales y Garantía de los Derechos Digitales, puedes contactar con el responsable del proyecto en este caso vía email a la dirección alex.acosta01@estudiant.upf.edu.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/formPopup.js"></script>
+    <script src="js/form.js"></script>
+    
+    <%- include('common/footer');-%>
+</body>
+
+<link rel="stylesheet" href="css/popup.css">
+<link rel="stylesheet" href="css/form.css">
+
+</html>

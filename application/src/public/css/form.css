@@ -1,0 +1,63 @@
+
+#project-form {
+    background-color: white;
+    box-shadow: 2px 2px 10px rgb(180, 176, 168);
+    padding: 50px;
+}
+
+.form-title {
+    margin-block: 30px;
+}
+div.form-group > p {
+    margin-block: 10px;
+}
+div.form-group > input, textarea {
+    /* width: -webkit-fill-available; */
+    margin-bottom: 5px;
+    width: 80%;
+}
+
+#project-form-group {
+    margin-left: 10%;
+}
+
+#form-buttons {
+    margin-top: 25px;
+    /* display: flex;
+    justify-self: flex-end; */
+}
+
+
+#EVENTS{
+    text-align: center;
+}
+td > input,select {
+    max-width: 95px;
+}
+td > input.table-date-input{
+    max-width: 130px;
+}
+
+td > #event-description {
+    min-width: 160px;
+}
+td > #event-material {
+    min-width: 130px;
+}
+td > #event-class {
+    min-width: 150px;
+}
+
+/* Input interaction */
+:required ::content {
+    box-shadow: none;
+}
+:required {
+	outline: rgb(209, 10, 10);
+    box-shadow: 0 0 3px rgb(209, 10, 10);
+}
+
+input:focus,textarea:focus {
+    outline: lightseagreen;
+    box-shadow: 0 0 5px lightseagreen;
+}

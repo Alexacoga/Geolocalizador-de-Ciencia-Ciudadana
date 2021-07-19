@@ -1,0 +1,73 @@
+﻿<%- include('common/header');-%>
+
+<!-- <link rel="stylesheet" href="css/.css"> -->
+</head>
+
+<body>
+    <%- include('common/navBar');-%>
+    <div class="main-container" id="main-container">
+        <h1 id="main-title">Mapa de proyectos</h1>
+        
+        <!-- get the incoming list of projects -->
+        <span id="projects" hidden><%= projects %></span>
+
+        <div id="map-filter" autocomplete="off">
+            <h3 style="margin-bottom: 10px; margin-left: 20px;">Añadir filtro en la búsqueda de proyectos</h3>
+            <p>
+                Título <input type="text" id="TITLE" style="margin-right: 15px;  width: 120px">
+                
+                Temática <input list="tematicas" type="text" id="TOPICS" style="margin-right: 15px;  width: 120px">
+                <datalist id="tematicas">
+                    <option value="Biodiversidad y medioambiente"><option value="Tecnologías de la información y comunicaciones"><option value="Biotecnología">
+                    <option value="Arquitectura y planificación del territorio"><option value="Ciencias sociales y humanidades"><option value="Creación digital">
+                    <option value="Astronomía"><option value="Ingeniería"><option value="Matemáticas"><option value="Salud"><option value="Investigación Educativa">
+                    <option value="Física"><option value="Conocimiento general">
+                </datalist>
+
+                Alcance geográfico
+                <select id="DEVELOPMENT SPACE" style="margin-right: 15px; width: 100px">
+                    <option><!--Sin definir--></option><option>Local</option><option>Regional</option>
+                    <option>Nacional</option><option>Internacional</option><option>Europeo</option>
+                </select>
+
+                Presencialidad
+                <select id="PRESENTIAL" style="margin-right: 15px; width: 100px;">
+                    <option><!--Sin definir--></option><option>Presencial</option><option>A distancia</option><option>Mixto</option>
+                </select>
+                
+                Idioma <input list="idiomas" type="text" id="Language" style="max-width: 100px">
+                <datalist id="idiomas">
+                    <option value="Castellano">
+                    <option value="Catalán">
+                    <option value="Inglés">
+                </datalist>
+            </p>
+            
+            <p>
+                Fecha 
+                Inicio <input id="start-date" type="date" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" style="margin-right: 15px; max-width: 125px;">
+                Final <input id="end-date" type="date" min="start-date" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" style="margin-right: 350px; max-width: 125px;">
+
+                Con Eventos <input id="EVENTS" type="checkbox" style="margin-right: 25px;">
+
+                <button id="reset">Vaciar</button>
+                <button id="filter">Filtrar</button>
+            </p>
+        </div>
+
+        <div id="map"></div>
+
+        <script src="js/mapFilter.js"></script>
+        <script src="js/mapScript.js"></script>
+        <script defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiQRjJDMM-12INzK3NGKTL8zbAKhW8YjQ&callback=initMap">
+        </script>  <!-- Set the tokens and the function to callback -->
+
+    </div>
+
+    <%- include('common/footer');-%>
+</body>
+
+<link rel="stylesheet" href="css/map.css">
+
+</html>
