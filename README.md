@@ -1,5 +1,5 @@
 # Geolocalizador-de-Ciencia-Ciudadana
-## Proyecto desarrollado por Alex Acosta Garcia
+#### Proyecto desarrollado por Alex Acosta Garcia
 
 ## Descripción
 Este proyecto, realizado como trabajo de final de grado, tiene el objetivo de acercar de manera los proyectos de ciencia ciudadana. Para llevarlo a cabo creamos un aplicativo que dispone de herramientas para localiza proyectos en un mapa, en el que podemos filtrar, y otra para añadir nuevos. Además del añadido de eventos aparte de la información dentro de proyectos.
