@@ -1,0 +1,23 @@
+{
+  "name": "webcienciaciudadana",
+  "version": "1.0.0",
+  "description": "Aplicativo web para geolocalización de proyectos de ciencia ciudadana",
+  "private": true,
+  "main": "./src/app.js",
+  "scripts": {
+    "start": "node ./src/app.js",
+    "dev": "nodemon ./src/app.js"
+  },
+  "keywords": [],
+  "author": "Alex Acosta Garcia",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.0",
+    "ejs": "^3.1.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "morgan": "^1.10.0"
+  }
+}
